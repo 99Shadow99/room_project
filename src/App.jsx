@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './Home';
+import Rent from './Rent';
+import Offer from './Offer';
+import About from './About';
+import Contact from './Contact';
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <Router>
+            <div className="App">
+                {/* Navigation Bar */}
+                <nav className="bg-gray-800 p-4">
+                    <ul className="flex space-x-4 text-white">
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/rent">Rent Rooms</Link></li>
+                        <li><Link to="/offer">Offer Rooms</Link></li>
+                        <li><Link to="/about">About Us</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                    </ul>
+                </nav>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+                {/* Define Routes */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/rent" element={<Rent />} />
+                    <Route path="/offer" element={<Offer />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
-export default App
+export default App;
